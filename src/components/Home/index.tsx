@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import firebaseConfig from '../../config/firebase-config';
 import { Input } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
+import {Link} from "react-router-dom";
 
 
 const Home = () => {
@@ -48,7 +49,7 @@ const Home = () => {
                 {
                     users && listUsers.map(user => {
                         return (
-                            <div key={user.name}>{user.name}</div>
+                            <Link to={`/users/${user.name}`} key={user.name}>{user.name}</Link>
                         )
                     })
                 }
