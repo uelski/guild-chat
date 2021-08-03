@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import firebase from '../../config/firebase-config';
 import { useParams, useLocation } from 'react-router-dom';
 import ChatArea from './ChatArea';
+import styles from './Chat.module.css';
 
 interface ParamTypes {
     id: string
@@ -35,8 +36,8 @@ const Chat = () => {
     }
 
     return (
-        <div>
-            <div>Chat</div>
+        <div className={styles.ChatWrapper}>
+            <h2>Chat</h2>
             {
                 chat && <ChatArea sender={id} reciever={reciever} />
             }

@@ -3,6 +3,7 @@ import firebase from '../../config/firebase-config';
 import { Input } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import {Link} from "react-router-dom";
+import styles from './Home.module.css';
 
 
 const Home = () => {
@@ -38,8 +39,8 @@ const Home = () => {
     }
     return (
 
-        <div className="home">
-            <div className="home__form-area">
+        <div className={styles.HomeWrapper}>
+            <div className={styles.UserForm}>
                 <Input value={userValue} onChange={(e) => handleValueChange(e)} placeholder="Add User" />
                 <Button disabled={userValue.length === 0} onClick={handleSubmit}>Submit</Button>
             </div>
@@ -47,7 +48,7 @@ const Home = () => {
                 {
                     users && listUsers.map(user => {
                         return (
-                            <Link to={`/users/${user.name}`} key={user.name}>{user.name}</Link>
+                            <Link className={styles.UserLink} to={`/users/${user.name}`} key={user.name}>{user.name}</Link>
                         )
                     })
                 }

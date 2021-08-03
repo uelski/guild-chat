@@ -38,7 +38,6 @@ const ChatArea = (props) => {
             }
             getRecieverMessages(senderArray)
         })
-        console.log(messages)
     }, [])
 
     const handleValueChange = (e) => {
@@ -46,7 +45,6 @@ const ChatArea = (props) => {
     }
 
     const handleSubmit = () => {
-        console.log('handle fired')
         const messageToSend = {
             value: messageValue,
             created: firebase.database.ServerValue.TIMESTAMP,
@@ -57,13 +55,13 @@ const ChatArea = (props) => {
 
     return (
         <div>
-            <div>
+            <ul>
                 {
                     messages.sort(({createdAt:a}, {createdAt:b}) => a-b).map(message => {
-                        return <p>{message.message}</p>
+                        return <li key={message.createdAt}>{message.message}</li>
                     })
                 }
-            </div>
+            </ul>
             <div>
                 <Input value={messageValue} onChange={(e) => handleValueChange(e)} placeholder="Write a Message" />
                 <Button disabled={messageValue.length === 0} onClick={handleSubmit}>Send</Button>
