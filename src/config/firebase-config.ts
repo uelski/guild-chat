@@ -4,7 +4,8 @@ const firebaseConfig = {
     projectId: "guild-chat-app-b7f12",
     storageBucket: "guild-chat-app-b7f12.appspot.com",
     messagingSenderId: "406622630572",
-    appId: "1:406622630572:web:f0298dcde18643e3632509"
+    appId: "1:406622630572:web:f0298dcde18643e3632509",
+    databaseURL: "https://guild-chat-app-b7f12-default-rtdb.firebaseio.com/"
 };
 
 export default firebaseConfig;
