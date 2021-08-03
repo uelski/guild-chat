@@ -6,14 +6,9 @@ import {
 } from "react-router-dom";
 import Home from './components/Home'
 import Chat from './components/Chat'
-import firebase from 'firebase';
-import firebaseConfig from './config/firebase-config';
+
 
 function App() {
-
-  useEffect(()=> {
-    // firebase.initializeApp(firebaseConfig);
-  }, [])
 
   return (
     <div className="App">

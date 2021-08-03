@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 const firebaseConfig = {
     apiKey: "AIzaSyC0lvqvkbmSCng4_5D1XRqju8wFRbBZhQU",
     authDomain: "guild-chat-app-b7f12.firebaseapp.com",
@@ -8,4 +10,6 @@ const firebaseConfig = {
     databaseURL: "https://guild-chat-app-b7f12-default-rtdb.firebaseio.com/"
 };
 
-export default firebaseConfig;
+firebase.initializeApp(firebaseConfig)
+
+export default firebase;
