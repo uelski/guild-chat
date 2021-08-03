@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import firebase from '../../config/firebase-config';
 import { useParams, useLocation } from 'react-router-dom';
+import ChatArea from './ChatArea';
 
 interface ParamTypes {
     id: string
@@ -9,8 +10,8 @@ interface ParamTypes {
 const Chat = () => {
     const { id } = useParams<ParamTypes>();
     const [users, updateUsers] = useState({});
-    const [setReciever, updateReciever] = useState(null);
-    const [showChat, setChat] = useState(false);
+    const [reciever, updateReciever] = useState("");
+    const [chat, setChat] = useState(false);
     
     useEffect(()=> {
         firebase.database().ref('users').on('value', (data) => {
@@ -20,7 +21,8 @@ const Chat = () => {
     }, [])
 
     const handleReciever = (name: string) => {
-        
+        updateReciever(name)
+        setChat(true)
     }
     const userData = [];
 
@@ -35,6 +37,9 @@ const Chat = () => {
     return (
         <div>
             <div>Chat</div>
+            {
+                chat && <ChatArea sender={id} reciever={reciever} />
+            }
             <div className="chat-area">
                 {
                     userData.map(user => {
