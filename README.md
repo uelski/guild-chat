@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Guild Chat App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Directions
 
-In the project directory, you can run:
+Clone the repo, cd into the project directory and run:
+
+### `yarn install`
+
+Once the dependencies are installed run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Navigate to http://localhost:3000/ to view the application
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+## Basic Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Upon navigating to the home screen a user can create multiple usernames to chat between.
+- Once multiple usernames have been created a user can select one of the names and be directed to a new path with an option to choose the other users to chat with.
+- After a user selects a name to recieve thier chat, the history between the users will be displayed as well as an input field and 'Send' CTA to initiate a new message.
+- A new browser tab can be opened to respond to the first username's messages, with the chat data syncing across the tabs. 
+- More usernames and chats can be initiated by following the previous steps. 
 
-### `yarn build`
+## Technologies
+- [Create React App](https://create-react-app.dev/docs/adding-typescript/) with Typescript as the app template.
+- [Chakra UI](https://chakra-ui.com/) for accessible UI Components to make styling simpler. 
+- [Firebase](https://www.npmjs.com/package/firebase) for realtime database and persisting message data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Takeaways
+- If I were to complete this task again, I would simplify the chat functionality and user data models, thinking those through first before building out routing and user creation functionality. 
+- If the user creation and selection flow was similar to this iteration I would implement the useContext hook to more easily pass data between the components in different routes and files. 
+- I think my initial idea was overengineered and relied on too much technology I was not as familiar with given the timeframe. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Next Steps
+- Refactor async state updates in useEffect
+- Implement Context for state management 
+- Responsive styling and Chakra theming 
+- Incorporate a testing suite
+- Proper Typescript implementation 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
