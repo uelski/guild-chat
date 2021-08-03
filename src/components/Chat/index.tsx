@@ -44,7 +44,7 @@ const Chat = () => {
             <div className="chat-area">
                 {
                     userData.map(user => {
-                        return <button onClick={() => handleReciever(user.name)} key={user.name}>{user.name}</button>
+                        return <button className={styles.UserButton} onClick={() => handleReciever(user.name)} key={user.name}>{user.name}</button>
                     })
                 }
             </div>

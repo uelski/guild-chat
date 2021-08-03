@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import firebase from '../../config/firebase-config';
 import { Input } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
+import styles from './Chat.module.css';
 
 
 const ChatArea = (props) => {
@@ -15,12 +16,12 @@ const ChatArea = (props) => {
         firebase.database().ref(`users/${reciever}/${sender}`).on('value', (data) => {
             const messageData = data.val();
             if (messageData) {
-                console.log('second', messageData)
-                // updateMessages(messageData)
                 
                 for (let key in messageData) {
                     messageArray.push({message: messageData[key].value, createdAt: messageData[key].created, sender: messageData[key].sender })
                 }
+                updateMessages(messageArray)
+            } else {
                 updateMessages(messageArray)
             }
         })
@@ -31,7 +32,7 @@ const ChatArea = (props) => {
             const messageData = data.val();
             const senderArray = [];
             if (messageData) {
-                console.log('message data here')
+                console.log('message data here', messageData)
                 for (let key in messageData) {
                     senderArray.push({message: messageData[key].value, createdAt: messageData[key].created, sender: messageData[key].sender })
                 }
@@ -55,14 +56,15 @@ const ChatArea = (props) => {
 
     return (
         <div>
-            <ul>
+            <ul className={styles.ChatArea}>
                 {
                     messages.sort(({createdAt:a}, {createdAt:b}) => a-b).map(message => {
-                        return <li key={message.createdAt}>{message.message}</li>
+                        const isSender = message.sender === sender ? styles.Sender : '';
+                        return <li className={`${styles.Message} ${isSender}`} key={message.createdAt}>{message.sender}: {message.message}</li>
                     })
                 }
             </ul>
-            <div>
+            <div className={styles.FormArea}>
                 <Input value={messageValue} onChange={(e) => handleValueChange(e)} placeholder="Write a Message" />
                 <Button disabled={messageValue.length === 0} onClick={handleSubmit}>Send</Button>
             </div>
