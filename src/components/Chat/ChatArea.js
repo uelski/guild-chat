@@ -12,31 +12,32 @@ const ChatArea = (props) => {
     const [messageValue, updateValue] = useState("");
 
     const getRecieverMessages = (messageArray) => {
-        
         firebase.database().ref(`users/${reciever}/${sender}`).on('value', (data) => {
             const messageData = data.val();
             if (messageData) {
-                
+                console.log('uphere:', messageArray)
                 for (let key in messageData) {
                     messageArray.push({message: messageData[key].value, createdAt: messageData[key].created, sender: messageData[key].sender })
                 }
+                console.log(messageArray)
                 updateMessages(messageArray)
             } else {
                 updateMessages(messageArray)
             }
         })
     }
+    
 
-    useEffect(async () => {
-        await firebase.database().ref(`users/${sender}/${reciever}`).on('value', (data) => {
+    useEffect( () => {
+        firebase.database().ref(`users/${sender}/${reciever}`).on('value', (data) => {
             const messageData = data.val();
             const senderArray = [];
             if (messageData) {
-                console.log('message data here', messageData)
                 for (let key in messageData) {
                     senderArray.push({message: messageData[key].value, createdAt: messageData[key].created, sender: messageData[key].sender })
                 }
             }
+            console.log('sender', senderArray)
             getRecieverMessages(senderArray)
         })
     }, [])

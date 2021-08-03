@@ -14,11 +14,15 @@ const Chat = () => {
     const [reciever, updateReciever] = useState("");
     const [chat, setChat] = useState(false);
     
-    useEffect(()=> {
+    useEffect((): (() => void)=> {
+        let mounted = true;
         firebase.database().ref('users').on('value', (data) => {
             const userData = data.val();
-            updateUsers(userData);
+            if(mounted) {
+                updateUsers(userData);
+            }
         })
+        return () => mounted = false;
     }, [])
 
     const handleReciever = (name: string) => {
