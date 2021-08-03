@@ -15,12 +15,11 @@ const ChatArea = (props) => {
         firebase.database().ref(`users/${reciever}/${sender}`).on('value', (data) => {
             const messageData = data.val();
             if (messageData) {
-                console.log('uphere:', messageArray)
+                const updatedArray = messageArray.filter(obj => obj.sender === sender)
                 for (let key in messageData) {
-                    messageArray.push({message: messageData[key].value, createdAt: messageData[key].created, sender: messageData[key].sender })
+                    updatedArray.push({message: messageData[key].value, createdAt: messageData[key].created, sender: messageData[key].sender })
                 }
-                console.log(messageArray)
-                updateMessages(messageArray)
+                updateMessages(updatedArray)
             } else {
                 updateMessages(messageArray)
             }
@@ -37,7 +36,6 @@ const ChatArea = (props) => {
                     senderArray.push({message: messageData[key].value, createdAt: messageData[key].created, sender: messageData[key].sender })
                 }
             }
-            console.log('sender', senderArray)
             getRecieverMessages(senderArray)
         })
     }, [])
