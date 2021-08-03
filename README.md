@@ -30,7 +30,7 @@ Navigate to http://localhost:3000/ to view the application
 
 ## Takeaways
 - If I were to complete this task again, I would simplify the chat functionality and user data models, thinking those through first before building out routing and user creation functionality. 
-- If the user creation and selection flow was similar to this iteration I would implement the useContext hook to more easily pass data between the components in different routes and files. 
+- If the user creation and selection flow was similar to this iteration I would implement the useContext hook to more easily pass data between the components in different routes and files, and minimize the repeat calls for the firebase user data. 
 - I think my initial idea was overengineered and relied on too much technology I was not as familiar with given the timeframe. 
 
 ## Next Steps
