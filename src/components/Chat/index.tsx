@@ -19,6 +19,9 @@ const Chat = () => {
         })
     }, [])
 
+    const handleReciever = (name: string) => {
+        
+    }
     const userData = [];
 
     for (let key in users) {
@@ -28,14 +31,17 @@ const Chat = () => {
             })
         }
     }
+
     return (
         <div>
             <div>Chat</div>
-            {
-                userData.map(user => {
-                    return <div key={user.name}>{user.name}</div>
-                })
-            }
+            <div className="chat-area">
+                {
+                    userData.map(user => {
+                        return <button onClick={() => handleReciever(user.name)} key={user.name}>{user.name}</button>
+                    })
+                }
+            </div>
         </div>
     )
 }
